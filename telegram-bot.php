@@ -1,112 +1,150 @@
 <?php
- 
-$botToken = "387537131:AAElnZLmS_HEMIe3CJJhfLPlg41-KWMmyh8";
-$website = "https://api.telegram.org/bot".$botToken;
- 
-$update = file_get_contents('php://input');
-$update = json_decode($update, TRUE);
- 
- 
-$chatId = $update["message"]["chat"]["id"];
-$message = $update["message"]["text"];
- 
- 
-switch($message) {
-       
-        case "/coin":
-                sendMessage($chatId, "As an exchange, Binance team will not share our views on 
-coins. You are welcome to discuss various coins in our group, though.");
-        break;
 
-        case "/list":
-                sendMessage($chatId, "If you suggest a coin for listing on Binance, please ask the core team to fill out our form: https://goo.gl/forms/rm4JuOPOxYq2xGTQ2. 
-Binance does not disclose or discuss coin listing plans or information until after the coin starts trading on the exchange.  
-Binance also requires coin teams to respect our confidentiality policy.  Any team that says they will list on Binance will cause them to disqualify.");
-        break;
+  $botToken = "387537131:AAElnZLmS_HEMIe3CJJhfLPlg41-KWMmyh8";
+  $website = "https://api.telegram.org/bot".$botToken;
 
-	case "/app":
-                sendMessage($chatId, "Binance APP Download Link
-Android :   https://ftp.binance.com/pack/Binance.apk 
-iOS:   https://fir.im/binance   (you need to uninstall previous version first)
-How to Install Binance iOS APP:   https://support.binance.com/hc/en-us/articles/115001507811 ");
-        break;
+  $update = file_get_contents('php://input');
+  $update = json_decode($update, TRUE);
 
-	case "/feature":
-                sendMessage($chatId, "Your feature request is noted. If you really want this feature, please also write to us at product@binance.com. Please be as detailed as possible. If your suggestion is a good one, you might even get a neat prize from us.");
-        break;
+  $chatId = $update["message"]["chat"]["id"];
+  $message = $update["message"]["text"];
 
-        case "/plan":
-                sendMessage($chatId, "Binance usually does not disclose our plans, for a few reasons: 
-                        
-1, we want to stay clean from the potential accusation of hyping up the price; 
-2, we don't want to let our competitors know our plans;  And 
-3, our plans often change. We want to keep our tradition of always being able to deliver everything we say.
-Rest assured, we have our plans, and there is a constant stream of neat features coming, fast.");
-        break;
+  switch($message) {
+         
+    case "/coin":
+      sendMessage($chatId, "As a reputable exchange, the Binance team will not share our views on individual coins. "
+        ."However, you are welcome to discuss various coins in our group amongst the rest of the community."
+      );
+    break;
 
-        case "/slow":
-                sendMessage($chatId, "If your deposit or withdraw is slow, please check the status of your blockchain first.  Bitcoin blockchain is often full.  You can check the bitcoin blockchain status at: http://statoshi.info/dashboard/db/memory-pool or https://blockchain.info/unconfirmed-transactions
-                        
-Ethereum blockchain is often full when a big ICO is in progress. If the blockchains are not full, then PRIVATELY send us your account email and txid.");
-        break;
+    case "/list":
+      sendMessage($chatId, "If you would like to suggest a coin for listing on Binance, please ask the core team to "
+        ."[fill out our application form](https://goo.gl/forms/rm4JuOPOxYq2xGTQ2).\n\n"
+        ."Binance does not disclose coin listing information until an official announcement has been made. You may "
+        ."join our announcements channel for the latest news "
+        ."([@binance_announcements](https://t.me/binance_announcements)).\n\n"
+        ."Additionally, if a project has announced listing on Binance prior to an official Binance announcement, they "
+        ."are at risk of disqualification."
+      ); 
+    break;
 
-        case "/angel":
-                sendMessage($chatId, "Calling for Binance Angels 
-https://support.binance.com/hc/en-us/articles/115000483751");
-        break;
+    case "/app":
+      sendMessage($chatId, "The Binance application is available for Android and iOS using the following links:\n\n"
+        ."*Android*: https://ftp.binance.com/pack/Binance.apk\n"
+        ."*iOS*: https://fir.im/binance "
+        ."([Installation Guide](https://support.binance.com/hc/en-us/articles/115001507811))\n\n"
+        ."If you have previously installed the application, please make sure it is uninstalled before attempting to "
+        ."install again."
+      );
+    break;
 
-        case "/login":
-                sendMessage($chatId, "If you aren’t unable to login, please try the following; 
-Internet: try to clear cache, cookies, and change dns or restart router. 
-Switch phone to flight mode and switch back.
-                        
-Please then try to login from www.binance.com/hw_login.html
-If you still cannot login, please private message your account ID to customer service. Our IT department will deal with it ASAP.");
-        break;
+    case "/feature":
+      sendMessage($chatId, "Thank you for the suggestion! We would appreciate it if you would write an e-mail to "
+        ."product@binance.com outlining your feature request. Please be as detailed as possible. If it is deemed "
+        ."valuable enough, you may even receive a neat prize from the team!"
+      );
+    break;
 
-        case "/2fa":
-                sendMessage($chatId, "To reset Google 2-Factor Authentication, please provide your account e-mail, tell us the 6 digit verify numbers you have received in support center, we will reset it for you.
-If you have assets in your account, for your security reason, you can’t withdraw within 48 hours after you cancel the verification.");
-        break;
+    case "/plan":
+      sendMessage($chatId, "Typically, Binance does not disclose future plans. There are a few reasons for this:\n\n"
+        ."1) We do not want to be accused of encouraging price manipulation.\n\n"
+        ."2) We want to avoid providing vital information to our competitors.\n\n" 
+        ."3) Our plans are subject to change at any time. There are always new features and improvements in the "
+        ."pipeline, and as a result, priorities may shift."
+      );
+    break;
 
-        case "/burn":
-                sendMessage($chatId, "Every quarter, Binance will use 20% of our profits to buy back BNB and destroy them, until we burn 50% of all the BNB back. All buy back transactions will be done on the blockchain. We eventually will burn 100MM BNB.");
-        break;
-        
-        case "/fork":
-                sendMessage($chatId, "Binance is preparing for the upcoming potential Bitcoin fork with the following procedures:
+    case "/slow":
+      sendMessage($chatId, "If your deposit or withdrawal is processing slowly, please check if you have received a "
+        ."Transaction ID (TxID). If you have, you will need to monitor the status of your transaction on the relevant "
+        ."blockchain.\n\n"
+        ."For Bitcoin (BTC), the network is often congested. You may check your transaction status on the Bitcoin "
+        ."blockchain at [Satoshi.info](http://statoshi.info/dashboard/db/memory-pool) or "
+        ."[Blockchain.info](https://blockchain.info/unconfirmed-transactions).\n\n"
+        ."For Ethereum (ETH), the network can get quite busy during large ICOs. You are able to check the status of a "
+        ."transaction on the Ethereum blockchain at [Etherscan.io](https://etherscan.io/txs).\n\n"
+        ."If you have received numerous confirmations with no update to your balance, please *privately* send us "
+        ."your Binance e-mail and TxID so that we may investigate further."
+      );
+    break;
 
-1. Before the potential fork, Binance may suspend momentarily Bitcoin deposits and withdrawals.
-2. If the hardfork happens, Binance would like to support any meaningful forks. We will decide the coin listing depending on the situation, our priority is to protect our customers funds.
-3. If you are unsure on how to deal with the technical issues regarding the bitcoin forking, feel free to deposit your Bitcoins on Binance exchange in advance and we will handle it for you and ensure you will have all possible assets after the fork.");
-                break;
+    case "/angel":
+      sendMessage($chatId, "Binance Angels are volunteers from within our community that donate their own time and "
+        ."energy to supporting our platform in various ways, primarily assisting our userbase with questions and "
+        ."concerns.\n\n"
+        ."For more information, and details regarding how to apply to become a Binance Angel, please read our "
+        ."announcement: [Calling for Binance Angels](https://support.binance.com/hc/en-us/articles/115000483751)."
+      );
+    break;
 
-        case "/commands":
-                sendMessage($chatId, "COMMANDS LIST:
-     /burn = Burn & Buyback info
-     /2fa = Queries regarding resetting 2fa
-     /login = If a user is unable to login
-     /angel = Angel Application
-     /slow = If a withdrawal/deposit is slow
-     /plan = If queried about binance plans
-     /feature = If suggesting a feature
-     /app = App links
-     /coin = If asked about your opinion on a coin
-     /list = If a user requests a coin to be listed
-     /fork = Queries regarding bitcoin fork");
-        break;
-       
-}
- 
-function sendMessage ($chatId, $message) {
-       
-        $url = $GLOBALS[website]."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
-        file_get_contents($url);
-       
-}
- 
- 
- 
- 
- 
+    case "/login":
+      sendMessage($chatId, "If for some reason you're unable to log in, please attempt the following:\n\n"
+        ."1) Utilize our alternate login page: "
+        ."[https://www.binance.com/hw_login.html](https://www.binance.com/hw_login.html)\n\n"
+        ."2) Clear your browser cache and cookies. If issues persist, temporarily disable any browser extensions you "
+        ."may have installed, especially script or ad blockers, or attempt logging in with another browser.\n\n"
+        ."3) Update your DNS servers to Google's (Primary: 8.8.8.8, Secondary: 8.8.4.4). As a last resort, you should "
+        ."attempt to log in with another device. If you are still unable, it may be an issue with your network. If you "
+        ." are connected to a home or Wi-Fi network, attempt using mobile data (or vice-versa).\n\n"
+        ."If none of the above steps were successful, please "
+        ."[open a support ticket](https://support.binance.com/hc/en-us/requests/new) and/or *private message* your "
+        ."Binance e-mail to customer service. Our IT department will look into it as soon as possible."
+      );
+    break;
+
+    case "/2fa":
+      sendMessage($chatId, "To reset your Two-Factor Authentication, please [open a support ticket]("
+        ."https://support.binance.com/hc/en-us/requests/new).\n\n"
+        ."*Note*: If you have assets in your account, for your own security, you will be unable to withdraw for a "
+        ."period of 48 hours after two-factor authentication has been reset."
+      );
+    break;
+
+    case "/burn":
+      sendMessage($chatId, "Every quarter, Binance will use 20% of its profits to buy back and burn/destroy BNB "
+        ."until 50% of the total supply has been depleted. Eventually, only a total of 100,000,000 BNB will remain.\n\n"
+        ."All related transactions will be completed on the blockchain, available for public view."
+      );
+    break;
+          
+    case "/fork":
+      sendMessage($chatId, "Binance is preparing for the upcoming potential Bitcoin fork with the following "
+        ." procedures:\n\n"
+        ."1) Before the potential fork, we may momentarily suspend Bitcoin deposits and withdrawals.\n\n"
+        ."2) If the fork occurs, Binance would like to support any meaningful forks. Our priority is to protect "
+        ."our customer's funds, and we will evaluate the coin listing depending on the situation.\n\n"
+        ."3) If you are unsure how to handle the technical aspects surrounding the bitcoin fork, feel free to deposit "
+        ."your Bitcoin on the Binance exchange in advance and we will handle it for you. We will ensure that you have "
+        ."all possible assets after the fork."
+      );
+    break;
+
+    case "/commands":
+      sendMessage($chatId, "*List of Commands*:\n"
+        ."/burn = Buyback & Burn Information\n"
+        ."/2fa = Resetting Two-Factor Authentication\n"
+        ."/login = Assistance with Login Issues\n"
+        ."/angel = Binance Angel Details & Application\n"
+        ."/slow = Guidance for Slow Deposits/Withdrawals\n"
+        ."/plan = Inquiries for Future Binance Plans\n"
+        ."/feature = Procedure for Feature Suggestions\n"
+        ."/app = Mobile App Details & Links\n"
+        ."/coin = Staff Opinions on Specific Coins\n"
+        ."/list = Procedures for Listing a Coin\n"
+        ."/fork = Information Regarding the Bitcoin Fork"
+      );
+    break;
+         
+  }
+
+  function sendMessage ($chatId, $message) {
+    $url = $GLOBALS[website]."/sendMessage?chat_id=".$chatId."&text=".urlencode($message);
+
+    // Temporarily forced.
+    $url = $url."&parse_mode=Markdown";
+    $url = $url."&disable_web_page_preview=true";
+
+    file_get_contents($url);
+  }
+
 ?>
